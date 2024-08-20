@@ -179,7 +179,7 @@ x-shared-env: &shared-api-worker-env
 services:
   # API service
   api:
-    image: langgenius/dify-api:0.6.16
+    image: langgenius/dify-api:latest
     restart: always
     environment:
       # Use the shared environment variables.
@@ -199,7 +199,7 @@ services:
   # worker service
   # The Celery worker for processing the queue.
   worker:
-    image: langgenius/dify-api:0.6.16
+    image: langgenius/dify-api:latest
     restart: always
     environment:
       # Use the shared environment variables.
@@ -218,7 +218,7 @@ services:
 
   # Frontend web application.
   web:
-    image: langgenius/dify-web:0.6.16
+    image: langgenius/dify-web:latest
     restart: always
     environment:
       CONSOLE_API_URL: ${CONSOLE_API_URL:-}
@@ -227,7 +227,7 @@ services:
 
   # The postgres database.
   db:
-    image: postgres:15-alpine
+    image: postgres:latest
     restart: always
     environment:
       PGUSER: ${PGUSER:-postgres}
@@ -244,7 +244,7 @@ services:
 
   # The redis cache.
   redis:
-    image: redis:6-alpine
+    image: redis:latest
     restart: always
     volumes:
       # Mount the redis data directory to the container.
@@ -256,7 +256,7 @@ services:
 
   # The DifySandbox
   sandbox:
-    image: langgenius/dify-sandbox:0.2.1
+    image: langgenius/dify-sandbox:latest
     restart: always
     environment:
       # The DifySandbox configurations
@@ -339,7 +339,7 @@ services:
 
   # The Weaviate vector store.
   weaviate:
-    image: semitechnologies/weaviate:1.19.0
+    image: semitechnologies/weaviate:latest
     profiles:
       - ""
       - weaviate
@@ -364,7 +364,7 @@ services:
   # Qdrant vector store.
   # (if used, you need to set VECTOR_STORE to qdrant in the api & worker service.)
   qdrant:
-    image: langgenius/qdrant:v1.7.3
+    image: langgenius/qdrant:latest
     profiles:
       - qdrant
     restart: always
@@ -419,7 +419,7 @@ services:
 
   # Chroma vector database
   chroma:
-    image: ghcr.io/chroma-core/chroma:0.5.1
+    image: ghcr.io/chroma-core/chroma:0.5.4
     profiles:
       - chroma
     restart: always
@@ -467,7 +467,7 @@ services:
       - milvus
 
   minio:
-    image: minio/minio:RELEASE.2023-03-20T20-16-18Z
+    image: minio/minio:latest
     profiles:
       - milvus
     environment:
@@ -485,7 +485,7 @@ services:
       - milvus
 
   milvus-standalone:
-    image: milvusdb/milvus:v2.3.1
+    image: milvusdb/milvus:latest
     profiles:
       - milvus
     command: ["milvus", "run", "standalone"]
@@ -544,7 +544,7 @@ services:
 
   # MyScale vector database
   myscale:
-    image: myscale/myscaledb:1.6
+    image: myscale/myscaledb:1.6.4
     profiles:
       - myscale
     restart: always
