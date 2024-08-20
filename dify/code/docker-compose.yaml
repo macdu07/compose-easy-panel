@@ -227,7 +227,7 @@ services:
 
   # The postgres database.
   db:
-    image: postgres:latest
+    image: postgres:15-alpine
     restart: always
     environment:
       PGUSER: ${PGUSER:-postgres}
@@ -244,7 +244,7 @@ services:
 
   # The redis cache.
   redis:
-    image: redis:latest
+    image: redis:6-alpine
     restart: always
     volumes:
       # Mount the redis data directory to the container.
@@ -339,7 +339,7 @@ services:
 
   # The Weaviate vector store.
   weaviate:
-    image: semitechnologies/weaviate:latest
+    image: semitechnologies/weaviate:1.19.0
     profiles:
       - ""
       - weaviate
@@ -419,7 +419,7 @@ services:
 
   # Chroma vector database
   chroma:
-    image: ghcr.io/chroma-core/chroma:0.5.4
+    image: ghcr.io/chroma-core/chroma:0.5.1
     profiles:
       - chroma
     restart: always
@@ -467,7 +467,7 @@ services:
       - milvus
 
   minio:
-    image: minio/minio:latest
+    image: minio/minio:RELEASE.2023-03-20T20-16-18Z
     profiles:
       - milvus
     environment:
@@ -485,7 +485,7 @@ services:
       - milvus
 
   milvus-standalone:
-    image: milvusdb/milvus:latest
+    image: milvusdb/milvus:v2.3.1
     profiles:
       - milvus
     command: ["milvus", "run", "standalone"]
@@ -544,7 +544,7 @@ services:
 
   # MyScale vector database
   myscale:
-    image: myscale/myscaledb:1.6.4
+    image: myscale/myscaledb:1.6
     profiles:
       - myscale
     restart: always
