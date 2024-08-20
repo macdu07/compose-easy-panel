@@ -256,7 +256,7 @@ services:
 
   # The DifySandbox
   sandbox:
-    image: langgenius/dify-sandbox:latest
+    image: langgenius/dify-sandbox:0.2.1
     restart: always
     environment:
       # The DifySandbox configurations
@@ -364,7 +364,7 @@ services:
   # Qdrant vector store.
   # (if used, you need to set VECTOR_STORE to qdrant in the api & worker service.)
   qdrant:
-    image: langgenius/qdrant:latest
+    image: langgenius/qdrant:v1.7.3
     profiles:
       - qdrant
     restart: always
